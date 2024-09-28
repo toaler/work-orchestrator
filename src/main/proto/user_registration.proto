@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package user.registration;
+package work.orchestrator.registration;
 
-option java_package = "com.example.grpc.user.registration";
+option java_package = "work.orchestrator.registration";
 option java_outer_classname = "UserRegistrationProto";
 
 // The user registration service

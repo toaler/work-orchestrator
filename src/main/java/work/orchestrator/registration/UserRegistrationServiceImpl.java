@@ -1,7 +1,5 @@
-package work.orchestrator.grpc.user.registration;
+package work.orchestrator.registration;
 
-import com.example.grpc.user.registration.UserRegistrationProto;
-import com.example.grpc.user.registration.UserRegistrationServiceGrpc;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package work.orchestrator.grpc.user.registration;
+package work.orchestrator.registration;
 
 import io.grpc.ManagedChannel;
 import io.grpc.Server;

@@ -1,7 +1,5 @@
-package work.orchestrator.grpc.user.registration;
+package work.orchestrator.registration;
 
-import com.example.grpc.user.registration.UserRegistrationProto;
-import com.example.grpc.user.registration.UserRegistrationServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.Server;
 import io.grpc.inprocess.InProcessChannelBuilder;
