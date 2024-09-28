@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package user.registration;
+
+option java_package = "com.example.grpc.user.registration";
+option java_outer_classname = "UserRegistrationProto";
+
+// The user registration service
+service UserRegistrationService {
+  rpc RegisterUser (RegisterUserRequest) returns (RegisterUserResponse);
+  rpc GetRegistrationStatus (GetRegistrationStatusRequest) returns (GetRegistrationStatusResponse);
+}
+
+// Request message for RegisterUser (POST /register)
+message RegisterUserRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+  string first_name = 4;
+  string last_name = 5;
+}
+
+// Response message for RegisterUser
+message RegisterUserResponse {
+  string message = 1;
+  string user_id = 2;
+  string status_url = 3;
+}
+
+// Request message for GetRegistrationStatus (GET /register/status)
+message GetRegistrationStatusRequest {
+  string user_id = 1;
+}
+
+// Response message for GetRegistrationStatus
+message GetRegistrationStatusResponse {
+  string user_id = 1;
+  string status = 2;  // Could be "pending", "completed", "failed", etc.
+  string message = 3;
+}
