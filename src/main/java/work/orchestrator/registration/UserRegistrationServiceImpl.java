@@ -4,12 +4,11 @@ import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class UserRegistrationServiceImpl extends UserRegistrationServiceGrpc.UserRegistrationServiceImplBase {
+public class UserRegistrationServiceImpl extends work.orchestrator.registration.UserRegistrationServiceGrpc.UserRegistrationServiceImplBase {
     private static final Logger logger = LoggerFactory.getLogger(UserRegistrationServiceImpl.class);
 
-
     @Override
-    public void registerUser(UserRegistrationProto.RegisterUserRequest request, StreamObserver<UserRegistrationProto.RegisterUserResponse> responseObserver) {
+    public void registerUser(work.orchestrator.registration.UserRegistrationProto.RegisterUserRequest request, StreamObserver<work.orchestrator.registration.UserRegistrationProto.RegisterUserResponse> responseObserver) {
         logger.info("Registering user");
         // Ensure request fields are correct
         if (request.getUsername().isEmpty() || request.getEmail().isEmpty()) {
@@ -19,7 +18,7 @@ public class UserRegistrationServiceImpl extends UserRegistrationServiceGrpc.Use
         }
 
         // Create a valid response
-        UserRegistrationProto.RegisterUserResponse response = UserRegistrationProto.RegisterUserResponse.newBuilder()
+        work.orchestrator.registration.UserRegistrationProto.RegisterUserResponse response = work.orchestrator.registration.UserRegistrationProto.RegisterUserResponse.newBuilder()
                 .setMessage("User registration successful.")
                 .setUserId("abc123")
                 .setStatusUrl("/register/status?userId=abc123")
@@ -31,9 +30,9 @@ public class UserRegistrationServiceImpl extends UserRegistrationServiceGrpc.Use
     }
 
     @Override
-    public void getRegistrationStatus(UserRegistrationProto.GetRegistrationStatusRequest request, StreamObserver<UserRegistrationProto.GetRegistrationStatusResponse> responseObserver) {
+    public void getRegistrationStatus(work.orchestrator.registration.UserRegistrationProto.GetRegistrationStatusRequest request, StreamObserver<work.orchestrator.registration.UserRegistrationProto.GetRegistrationStatusResponse> responseObserver) {
         // Implement your registration status logic here
-        UserRegistrationProto.GetRegistrationStatusResponse response = UserRegistrationProto.GetRegistrationStatusResponse.newBuilder()
+        work.orchestrator.registration.UserRegistrationProto.GetRegistrationStatusResponse response = work.orchestrator.registration.UserRegistrationProto.GetRegistrationStatusResponse.newBuilder()
                 .setUserId(request.getUserId())
                 .setStatus("pending")
                 .setMessage("Registration is pending")

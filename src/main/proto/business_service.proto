@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package work.orchestrator;
+option java_package = "work.orchestrator";
+option java_outer_classname = "BusinessServiceProto";
+
+service BusinessService {
+  rpc Dispatch(Request) returns (Response);
+}
+
+message Request {
+  string action = 1;
+  string payload = 2;
+}
+
+message Response {
+  string result = 1;
+}

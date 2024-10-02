@@ -24,7 +24,7 @@ public class UserRegistrationServiceNonBlockingTest {
     @RegisterExtension
     static final GrpcCleanupExtension grpcCleanup = new GrpcCleanupExtension(); // Register the extension
 
-    private UserRegistrationServiceGrpc.UserRegistrationServiceStub asyncStub;
+    private work.orchestrator.registration.UserRegistrationServiceGrpc.UserRegistrationServiceStub asyncStub;
 
     @BeforeEach
     public void setup() throws Exception {
@@ -53,7 +53,7 @@ public class UserRegistrationServiceNonBlockingTest {
     public void testRegisterUserAsync() throws Exception {
         logger.info("testRegisterUserAsync");
         // Create the request object
-        UserRegistrationProto.RegisterUserRequest request = UserRegistrationProto.RegisterUserRequest.newBuilder()
+        work.orchestrator.registration.UserRegistrationProto.RegisterUserRequest request = UserRegistrationProto.RegisterUserRequest.newBuilder()
                 .setUsername("johndoe")
                 .setEmail("john.doe@example.com")
                 .setPassword("SecureP@ssword")
@@ -65,9 +65,9 @@ public class UserRegistrationServiceNonBlockingTest {
         CountDownLatch latch = new CountDownLatch(1);
 
         // Define the StreamObserver to handle the asynchronous response
-        StreamObserver<UserRegistrationProto.RegisterUserResponse> responseObserver = new StreamObserver<UserRegistrationProto.RegisterUserResponse>() {
+        StreamObserver<work.orchestrator.registration.UserRegistrationProto.RegisterUserResponse> responseObserver = new StreamObserver<work.orchestrator.registration.UserRegistrationProto.RegisterUserResponse>() {
             @Override
-            public void onNext(UserRegistrationProto.RegisterUserResponse response) {
+            public void onNext(work.orchestrator.registration.UserRegistrationProto.RegisterUserResponse response) {
                 logger.info("onNext");
                 // Verify the response in onNext
                 assertEquals("User registration successful.", response.getMessage());
@@ -102,7 +102,7 @@ public class UserRegistrationServiceNonBlockingTest {
     @Test
     public void testGetRegistrationStatusAsync() throws Exception {
         // Create the request object
-        UserRegistrationProto.GetRegistrationStatusRequest request = UserRegistrationProto.GetRegistrationStatusRequest.newBuilder()
+        work.orchestrator.registration.UserRegistrationProto.GetRegistrationStatusRequest request = UserRegistrationProto.GetRegistrationStatusRequest.newBuilder()
                 .setUserId("abc123")
                 .build();
 
@@ -110,9 +110,9 @@ public class UserRegistrationServiceNonBlockingTest {
         CountDownLatch latch = new CountDownLatch(1);
 
         // Define the StreamObserver to handle the asynchronous response
-        StreamObserver<UserRegistrationProto.GetRegistrationStatusResponse> responseObserver = new StreamObserver<UserRegistrationProto.GetRegistrationStatusResponse>() {
+        StreamObserver<work.orchestrator.registration.UserRegistrationProto.GetRegistrationStatusResponse> responseObserver = new StreamObserver<UserRegistrationProto.GetRegistrationStatusResponse>() {
             @Override
-            public void onNext(UserRegistrationProto.GetRegistrationStatusResponse response) {
+            public void onNext(work.orchestrator.registration.UserRegistrationProto.GetRegistrationStatusResponse response) {
                 // Verify the response in onNext
                 assertEquals("abc123", response.getUserId());
                 assertEquals("pending", response.getStatus());
